@@ -1,0 +1,22 @@
+# Dependencies (reinstalled with npm install)
+node_modules
+
+# Build output (regenerated with npm run build)
+dist
+
+# Netlify CLI link info and local settings
+.netlify
+
+# Secrets / local environment variables
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+*.log
+
+# macOS and editor clutter
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea

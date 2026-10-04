@@ -1,0 +1,273 @@
+:root {
+  --bg: #000000;
+  --surface: #070708;
+  --text: #ececec;
+  --muted: #5c5c60;
+  --border: #26262a;
+  --blue: #3d7bff;
+  --serif: "Times New Roman", Times, "Liberation Serif", serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  overflow: hidden;
+}
+
+/* Layer 0: the flowing background text */
+#flow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page {
+  position: relative;
+  height: 100%;
+  padding: 12px 24px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* Layer 2: the name and contact line, sitting on top of the flowing text */
+.header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.contact {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: #c8c8cc;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.95), 0 0 4px rgba(0, 0, 0, 0.95);
+}
+
+.contact a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.contact .sep {
+  color: #6b6b70;
+  margin: 0 0.35em;
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  align-self: stretch;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--blue);
+  text-align: center;
+  text-shadow: 0 0 24px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.9);
+}
+
+/* Layer 1: the text box the background text wraps around */
+.editor {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: min(680px, 100% - 64px);
+  resize: none;
+  padding: 22px 24px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid transparent;  /* the blue characters around it are the border */
+  border-radius: 28px;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s, height 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.editor::placeholder { color: var(--muted); }
+
+.editor:focus {
+  border-color: transparent;
+}
+
+/* Fixed mode: a smaller box you can drag around the page */
+.editor.floating {
+  position: fixed;
+  left: 0;
+  top: 0;
+  flex: none;
+  width: min(1000px, 100vw - 64px);
+  height: min(560px, 100vh - 240px);
+  will-change: transform;
+}
+
+.editor.grab-edge,
+.editor.dragging {
+  cursor: move;
+}
+
+@media (max-width: 600px) {
+  .page { padding: 8px 16px 48px; }
+  .editor { width: calc(100% - 32px); }
+}
+
+/* ---- Resume: a horizontal accordion inside the box ---- */
+.resume {
+  --tab-w: 54px;
+  padding: 0;
+  overflow: hidden;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: #d9d9dd;
+}
+
+.accordion {
+  display: flex;
+  height: 100%;
+}
+
+.panel {
+  display: flex;
+  flex: none;
+  min-width: 0;
+  height: 100%;
+}
+
+.panel + .panel { border-left: 1px solid #1c1e29; }
+
+/* The tab: a narrow vertical strip with a sideways label */
+.tab {
+  flex: none;
+  width: var(--tab-w);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 0 20px;
+  background: transparent;
+  border: 0;
+  color: #8b8b92;
+  font: inherit;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.tab:hover { background: #0d0e12; color: #d9d9dd; }
+
+.tab:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: -4px;
+  border-radius: 10px;
+}
+
+.tab-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tab-arrow {
+  font-size: 0.9rem;
+  color: var(--blue);
+  opacity: 0.7;
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.panel.open .tab { color: var(--blue); }
+.panel.open .tab-arrow { transform: rotate(180deg); opacity: 1; }
+
+/* The body slides open sideways. Its inner content keeps a fixed width,
+   so the text never rewraps while it animates. */
+.panel-body {
+  width: 0;
+  overflow: hidden;
+  transition: width 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.panel.open .panel-body { width: var(--open-w, 520px); }
+
+.panel-inner {
+  width: var(--open-w, 520px);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #2c2c32 transparent;
+}
+
+.panel-inner::-webkit-scrollbar { width: 8px; }
+.panel-inner::-webkit-scrollbar-thumb { background: #2c2c32; border-radius: 8px; }
+
+.panel-content { padding: 22px 28px 26px 24px; }
+
+.resume h2 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--blue);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #1f2233;
+}
+
+.resume .entry + .entry { margin-top: 14px; }
+
+.resume .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resume .row strong { color: #f2f2f5; font-weight: 600; font-size: 1.04rem; }
+.resume .row span { color: #8b8b92; font-size: 0.9rem; white-space: nowrap; }
+.resume .row.sub em { color: #b9b9c0; }
+
+.resume ul { margin-top: 6px; padding-left: 1.15em; }
+.resume li + li { margin-top: 4px; }
+.resume li::marker { color: #4a4f66; }
+
+.resume .skills {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+}
+
+.resume .skills dt { color: #f2f2f5; font-weight: 600; }
+.resume .skills dd { margin: 0; color: #c4c4ca; }
+
+@media (max-width: 600px) {
+  .resume { --tab-w: 42px; }
+  .panel-content { padding: 18px 16px; }
+  .resume .skills { grid-template-columns: 1fr; }
+  .resume .skills dd { margin-bottom: 6px; }
+}

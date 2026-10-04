@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Victor Razo</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <canvas id="flow" aria-hidden="true"></canvas>
+    <main class="page">
+      <header class="header">
+        <h1 class="title">Victor Razo</h1>
+        <p class="contact">
+          <a href="https://www.linkedin.com/in/victor-razo-bab2bb2bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <span class="sep">|</span> +1 (313) 478 1985
+          <span class="sep">|</span> Ann Arbor, MI
+          <span class="sep">|</span> vrazo.2006@gmail.com
+        </p>
+      </header>
+      <article id="editor" class="editor resume" aria-label="Resume">
+        <div class="accordion">
+          <section class="panel" data-panel="skills">
+            <button class="tab" type="button" aria-expanded="false" aria-controls="panel-skills">
+              <span class="tab-label">Skills</span>
+              <span class="tab-arrow" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="panel-body" id="panel-skills">
+              <div class="panel-inner">
+                <div class="panel-content">
+                  <h2>Skills</h2>
+                  <dl class="skills">
+            <dt>Programming &amp; Software Development</dt><dd>C++, Java, Python, Git, GitHub, CI/CD</dd>
+            <dt>Cloud &amp; DevOps</dt><dd>AWS (CloudWatch, boto3, Lambda, SQS, CloudFormation, Step Functions, OpenSearch, ElasticSearch, API Gateway, IAM)</dd>
+            <dt>Engineering Tools</dt><dd>Siemens NX, LabVIEW, Canalyzer, CAN BUS Analysis</dd>
+            <dt>OS</dt><dd>Windows, MacOS, Linux</dd>
+          </dl>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel open" data-panel="experience">
+            <button class="tab" type="button" aria-expanded="true" aria-controls="panel-experience">
+              <span class="tab-label">Experience</span>
+              <span class="tab-arrow" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="panel-body" id="panel-experience">
+              <div class="panel-inner">
+                <div class="panel-content">
+                  <h2>Experience</h2>
+                  <div class="entry">
+            <div class="row"><strong>SDE Intern</strong><span>Seattle, Washington</span></div>
+            <div class="row sub"><em>Amazon Web Services &ndash; SSM Datastore Team</em><span>May 2026 &ndash; Aug 2026</span></div>
+            <ul>
+              <li>Redesigned cell-migration delete workflow by introducing an isolated SQS/Lambda processing path, decoupling migration traffic from live customer traffic and eliminating queue contention</li>
+              <li>Implemented bulk delete/reindex processing across OpenSearch and S3, improving cleanup throughput by 1.7x (exceeding the 1.5x target)</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="row"><strong>SDE Intern</strong><span>New York City, New York</span></div>
+            <div class="row sub"><em>Amazon Web Services &ndash; Billing Egress Team</em><span>May 2025 &ndash; Aug 2025</span></div>
+            <ul>
+              <li>Developed Python automation script integrated with MCP (Model Context Protocol) server to streamline debugging workflows, reduced average debugging time by 83% for related tickets</li>
+              <li>Automated AWS CloudWatch log retrieval using Python and boto3 SDK, eliminating manual retrieval process</li>
+              <li>Collaborated with team members using Git/GitHub workflow, managed feature branches and resolved merge conflicts to maintain code integrity</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="row"><strong>Student Intern</strong><span>Pontiac, Michigan</span></div>
+            <div class="row sub"><em>General Motors &ndash; Hydrogen Fuel Cells Team</em><span>Sep 2023 &ndash; July 2024</span></div>
+            <ul>
+              <li>Co-led project to replace traditional cathode and anode lab equipment with modified 3D printers, reducing equipment costs by 94% ($10,000 to $600)</li>
+              <li>Used LabVIEW to develop an algorithm and UI interface to command a 3D printer extruder around specified coordinates</li>
+              <li>Used Siemens NX to modify a scale replica of a 3D printer in order to conform to environmental constraints</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="row"><strong>Student Intern</strong><span>Dearborn, Michigan</span></div>
+            <div class="row sub"><em>Ford Motor Company &ndash; Electric Powertrain Controls Team</em><span>Sep 2022 &ndash; July 2023</span></div>
+            <ul>
+              <li>Developed validation test plans for 2 electric/hybrid vehicle platforms using Canalyzer, VISION, and VDA, conducting validation testing of charging systems, climate controls, and powertrain integration</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="row"><strong>Student Intern</strong><span>Remote</span></div>
+            <div class="row sub"><em>Ford Motor Company &ndash; Digital Twin Software Team</em><span>Sep 2021 &ndash; July 2022</span></div>
+            <ul>
+              <li>Used Excel to record and manage location data of 360&deg; cameras positioned around factories, providing my team with a reliable source of necessary data</li>
+            </ul>
+          </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel" data-panel="education">
+            <button class="tab" type="button" aria-expanded="false" aria-controls="panel-education">
+              <span class="tab-label">Education</span>
+              <span class="tab-arrow" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="panel-body" id="panel-education">
+              <div class="panel-inner">
+                <div class="panel-content">
+                  <h2>Education</h2>
+                  <div class="entry">
+            <div class="row"><strong>University of Michigan</strong><span>Ann Arbor, MI</span></div>
+            <div class="row sub"><em>Bachelor of Engineering in Computer Engineering</em><span>Expected Graduation: April 2028</span></div>
+            <ul>
+              <li>Related Coursework: Object Oriented Programming (ENGR151), Discrete Mathematics (EECS203), Introduction to Logic Design (EECS270), Programming and Introductory Data Structures (EECS280)</li>
+            </ul>
+          </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
