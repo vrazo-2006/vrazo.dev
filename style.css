@@ -19,13 +19,6 @@ body {
   overflow: hidden;
 }
 
-/* Layer 0: the flowing background text */
-#flow {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
 
 .page {
   position: relative;
@@ -34,10 +27,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
-/* Layer 2: the name and contact line, sitting on top of the flowing text */
+/* The name and contact line */
 .header {
   position: relative;
   z-index: 2;
@@ -92,13 +85,14 @@ body {
 .editor {
   position: relative;
   z-index: 1;
-  flex: 1;
-  width: min(680px, 100% - 64px);
+  flex: none;
+  width: min(1000px, 100% - 32px);
+  height: min(560px, 100vh - 200px);
   resize: none;
   padding: 22px 24px;
   background: var(--surface);
   color: var(--text);
-  border: 1px solid transparent;  /* the blue characters around it are the border */
+  border: 1px solid var(--blue);
   border-radius: 28px;
   font-family: var(--serif);
   font-size: 1.15rem;
@@ -107,27 +101,8 @@ body {
   transition: border-color 0.15s, box-shadow 0.15s, height 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.editor::placeholder { color: var(--muted); }
 
-.editor:focus {
-  border-color: transparent;
-}
 
-/* Fixed mode: a smaller box you can drag around the page */
-.editor.floating {
-  position: fixed;
-  left: 0;
-  top: 0;
-  flex: none;
-  width: min(1000px, 100vw - 64px);
-  height: min(560px, 100vh - 240px);
-  will-change: transform;
-}
-
-.editor.grab-edge,
-.editor.dragging {
-  cursor: move;
-}
 
 @media (max-width: 600px) {
   .page { padding: 8px 16px 48px; }
