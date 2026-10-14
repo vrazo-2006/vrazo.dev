@@ -111,6 +111,10 @@
               </div>
             </div>
           </section>
+        </div>
+      </article>
+      <article class="editor practice" aria-label="Practice">
+        <div class="accordion">
           <section class="panel" data-panel="pow2">
             <button class="tab" type="button" aria-expanded="false" aria-controls="panel-pow2">
               <span class="tab-label">Powers of 2</span>
@@ -142,7 +146,39 @@
                       <button class="pow2-submit" type="submit">Check</button>
                     </form>
                     <p class="pow2-feedback" aria-live="polite"></p>
+                    <p class="pow2-tip" hidden></p>
                     <p class="pow2-score">0 / 0 · streak 0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel open" data-panel="calc">
+            <button class="tab" type="button" aria-expanded="true" aria-controls="panel-calc">
+              <span class="tab-label">Calculus</span>
+              <span class="tab-arrow" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="panel-body" id="panel-calc">
+              <div class="panel-inner">
+                <div class="panel-content">
+                  <h2>Derivatives &amp; Integrals</h2>
+                  <div id="calc" class="calc">
+                    <div class="calc-mode" role="group" aria-label="Topic">
+                      <button type="button" data-mode="mixed" aria-pressed="true">Mixed</button>
+                      <button type="button" data-mode="d" aria-pressed="false">d/dx</button>
+                      <button type="button" data-mode="i" aria-pressed="false">&int; dx</button>
+                      <button type="button" data-mode="weak" aria-pressed="false">Weak spots</button>
+                    </div>
+                    <p class="calc-tag"></p>
+                    <div class="calc-prompt" aria-live="polite"></div>
+                    <div class="calc-choices"></div>
+                    <div class="calc-explain" aria-live="polite" hidden></div>
+                    <button class="calc-next" type="button" hidden>Next &rarr;</button>
+                    <div class="calc-foot">
+                      <span class="calc-score">0 / 0 &middot; streak 0</span>
+                      <span class="calc-weak"></span>
+                      <button class="calc-reset" type="button">reset</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -153,5 +189,6 @@
     </main>
     <script type="module" src="/main.js"></script>
     <script type="module" src="/powers.js"></script>
+    <script type="module" src="/calc.js"></script>
   </body>
 </html>

@@ -10,19 +10,19 @@
 
 * { box-sizing: border-box; margin: 0; }
 
-html, body { height: 100%; }
+html, body { min-height: 100%; }
 
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--serif);
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 
 .page {
   position: relative;
-  height: 100%;
+  min-height: 100%;
   padding: 12px 24px 72px;
   display: flex;
   flex-direction: column;
@@ -110,7 +110,7 @@ body {
 }
 
 /* ---- Resume: a horizontal accordion inside the box ---- */
-.resume {
+.resume, .practice {
   --tab-w: 54px;
   padding: 0;
   overflow: hidden;
@@ -202,7 +202,7 @@ body {
 
 .panel-content { padding: 22px 28px 26px 24px; }
 
-.resume h2 {
+.resume h2, .practice h2 {
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.16em;
@@ -241,7 +241,7 @@ body {
 .resume .skills dd { margin: 0; color: #c4c4ca; }
 
 @media (max-width: 600px) {
-  .resume { --tab-w: 42px; }
+  .resume, .practice { --tab-w: 42px; }
   .panel-content { padding: 18px 16px; }
   .resume .skills { grid-template-columns: 1fr; }
   .resume .skills dd { margin-bottom: 6px; }
@@ -342,3 +342,180 @@ body {
 .pow2-feedback.bad { color: #ff7a7a; }
 
 .pow2-score { color: #5c5c60; font-size: 0.85rem; }
+
+/* ---- Practice box (second window under the resume) ---- */
+.practice {
+  margin-top: 4px;
+  font-size: 0.98rem;
+}
+
+/* ---- Calculus practice ---- */
+.calc { display: flex; flex-direction: column; gap: 10px; }
+
+.calc-mode {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-self: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.calc-mode button {
+  background: transparent;
+  border: 0;
+  color: #8b8b92;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 5px 14px;
+  cursor: pointer;
+}
+.calc-mode button + button { border-left: 1px solid var(--border); }
+.calc-mode button:hover:not(:disabled) { color: #d9d9dd; }
+.calc-mode button[aria-pressed="true"] { background: #0f1a33; color: var(--blue); }
+.calc-mode button:disabled { opacity: 0.35; cursor: default; }
+
+.calc-tag {
+  margin-top: 6px;
+  color: #8b8b92;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.calc-prompt {
+  font-size: clamp(1.5rem, 4.2vw, 2rem);
+  color: #f2f2f5;
+  line-height: 1.5;
+}
+.calc-prompt .op { color: var(--blue); }
+.calc-prompt sub, .calc-prompt sup { font-size: 0.6em; }
+
+.calc-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.calc-choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 12px;
+  text-align: left;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 1.08rem;
+  cursor: pointer;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.calc-choice:hover:not(:disabled) { border-color: var(--blue); }
+.calc-choice:disabled { cursor: default; }
+.calc-choice.ok { border-color: #2f8f5b; background: #0b1f14; }
+.calc-choice.bad { border-color: #9a3a3a; background: #230d0d; }
+.calc-choice:disabled:not(.ok):not(.bad) { opacity: 0.45; }
+
+.calc-key {
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: #5c5c60;
+  font-size: 0.75rem;
+}
+
+.calc-ans sup, .calc-ans sub { font-size: 0.65em; }
+
+.calc-explain {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #0b0b0d;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.calc-explain[hidden] { display: none; }
+.calc-verdict.ok { color: #5fd38d; }
+.calc-verdict.bad { color: #ff7a7a; }
+.calc-verdict .calc-ans { color: #f2f2f5; }
+.calc-type { color: #b9b9c0; }
+.calc-type strong { color: var(--blue); font-weight: 600; }
+.calc-rule { color: #d9d9dd; }
+.calc-why { color: #c4c4ca; }
+.calc-why .label { color: #ff7a7a; }
+.calc-soon { color: #5c5c60; font-size: 0.85rem; }
+
+.calc-next {
+  align-self: flex-start;
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  font: inherit;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+.calc-next[hidden] { display: none; }
+.calc-next:hover { background: #0f1a33; }
+
+.calc-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  color: #5c5c60;
+  font-size: 0.85rem;
+}
+.calc-weak { color: #8b6b6b; }
+.calc-reset {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  color: #5c5c60;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pow2-tip { color: #b9b9c0; font-size: 0.92rem; }
+
+/* ---- Phones: stack the accordion sections vertically ---- */
+@media (max-width: 600px) {
+  .editor { height: auto !important; border-radius: 20px; }
+  .accordion { flex-direction: column; height: auto; }
+  .panel { flex-direction: column; height: auto; }
+  .panel + .panel { border-left: 0; border-top: 1px solid #1c1e29; }
+
+  .tab {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    padding: 14px 18px;
+  }
+  .tab-label { writing-mode: horizontal-tb; transform: none; }
+  .tab-arrow { transform: rotate(0deg); }
+  .panel.open .tab-arrow { transform: rotate(90deg); }
+
+  .panel-body {
+    width: auto !important;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .panel.open .panel-body { grid-template-rows: 1fr; }
+  .panel-inner { width: auto !important; height: auto; min-height: 0; overflow: hidden; }
+
+  .resume .panel-content h2,
+  .practice .panel-content h2 { display: none; }
+
+  .calc-choices { grid-template-columns: 1fr; }
+  .calc-mode button { padding: 6px 11px; }
+}

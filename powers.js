@@ -13,6 +13,7 @@ if (root) {
   const input = root.querySelector('.pow2-input')
   const submitBtn = root.querySelector('.pow2-submit')
   const feedbackEl = root.querySelector('.pow2-feedback')
+  const tipEl = root.querySelector('.pow2-tip')
   const scoreEl = root.querySelector('.pow2-score')
   const modeBtns = Array.from(root.querySelectorAll('.pow2-mode button'))
   const maxSelect = root.querySelector('.pow2-max')
@@ -58,11 +59,31 @@ if (root) {
     return [dLo < dHi ? lo : lo + 1]
   }
 
+  const BIG = ['', 'thousand', 'million', 'billion', 'trillion']
+
+  // How to work 2^n out in your head: 2^10 ≈ 1,000, then a small power.
+  function valueTip(n) {
+    if (n < 10) return `Small powers: just keep doubling from 1 — 1, 2, 4, 8, 16, 32, 64, 128, 256, 512.`
+    const k = Math.floor(n / 10), r = n % 10
+    const approx = r === 0 ? `≈ 1 ${BIG[k]}` : `≈ ${2 ** r} ${BIG[k]}`
+    return `Split it: 2${sup(n)} = (2¹⁰)${sup(k)} × 2${sup(r)}. Since 2¹⁰ = 1,024 ≈ 1 thousand, that’s ${approx} — then the exact digits are slightly higher.`
+  }
+
+  // Why one power is closer than the other.
+  function closestTip(x) {
+    const lo = Math.floor(Math.log2(x))
+    const mid = 1.5 * 2 ** lo
+    return `It sits between 2${sup(lo)} = ${fmt(2 ** lo)} and 2${sup(lo + 1)} = ${fmt(2 ** (lo + 1))}. ` +
+      `Halfway is 1.5 × 2${sup(lo)} = ${fmt(mid)}, so anything below that rounds down to ${lo}, above it rounds up to ${lo + 1}. ` +
+      `Anchors: 2¹⁰ ≈ thousand, 2²⁰ ≈ million, 2³⁰ ≈ billion.`
+  }
+
   function newQuestion() {
     const max = Number(maxSelect.value)
     answered = false
     feedbackEl.textContent = ''
     feedbackEl.className = 'pow2-feedback'
+    tipEl.hidden = true
     input.value = ''
     submitBtn.textContent = 'Check'
 
@@ -70,6 +91,7 @@ if (root) {
       const n = pickExponent(0, max)
       current = {
         n,
+        tip: valueTip(n),
         accept: new Set([String(2 ** n)]),
         answerText: `2${sup(n)} = ${fmt(2 ** n)}`,
       }
@@ -85,6 +107,7 @@ if (root) {
       const ns = closestExponents(x)
       current = {
         n: ns[0],
+        tip: closestTip(x),
         accept: new Set(ns.map(String)),
         answerText: ns
           .map((k) => `2${sup(k)} = ${fmt(2 ** k)}`)
@@ -113,6 +136,8 @@ if (root) {
       streak = 0
       feedbackEl.textContent = `Not quite — ${current.answerText}`
       feedbackEl.className = 'pow2-feedback bad'
+      tipEl.textContent = current.tip
+      tipEl.hidden = false
     }
     scoreEl.textContent = `${right} / ${total} · streak ${streak}`
     submitBtn.textContent = 'Next'
