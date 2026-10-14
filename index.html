@@ -111,9 +111,47 @@
               </div>
             </div>
           </section>
+          <section class="panel" data-panel="pow2">
+            <button class="tab" type="button" aria-expanded="false" aria-controls="panel-pow2">
+              <span class="tab-label">Powers of 2</span>
+              <span class="tab-arrow" aria-hidden="true">&#9656;</span>
+            </button>
+            <div class="panel-body" id="panel-pow2">
+              <div class="panel-inner">
+                <div class="panel-content">
+                  <h2>Powers of 2</h2>
+                  <div id="pow2" class="pow2">
+                    <div class="pow2-controls">
+                      <div class="pow2-mode" role="group" aria-label="Drill">
+                        <button type="button" data-mode="value" aria-pressed="true">2<sup>n</sup> = ?</button>
+                        <button type="button" data-mode="closest" aria-pressed="false">Closest power</button>
+                      </div>
+                      <label class="pow2-range">n up to
+                        <select class="pow2-max">
+                          <option value="10">10</option>
+                          <option value="16">16</option>
+                          <option value="32" selected>32</option>
+                          <option value="40">40</option>
+                        </select>
+                      </label>
+                    </div>
+                    <div class="pow2-prompt" aria-live="polite"></div>
+                    <p class="pow2-hint"></p>
+                    <form class="pow2-form" autocomplete="off">
+                      <input class="pow2-input" type="text" aria-label="Your answer" />
+                      <button class="pow2-submit" type="submit">Check</button>
+                    </form>
+                    <p class="pow2-feedback" aria-live="polite"></p>
+                    <p class="pow2-score">0 / 0 · streak 0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </article>
     </main>
     <script type="module" src="/main.js"></script>
+    <script type="module" src="/powers.js"></script>
   </body>
 </html>

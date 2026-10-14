@@ -246,3 +246,99 @@ body {
   .resume .skills { grid-template-columns: 1fr; }
   .resume .skills dd { margin-bottom: 6px; }
 }
+
+/* ---- Powers of 2 practice ---- */
+.pow2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.pow2-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+}
+
+.pow2-mode {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.pow2-mode button {
+  background: transparent;
+  border: 0;
+  color: #8b8b92;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 5px 14px;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s;
+}
+
+.pow2-mode button + button { border-left: 1px solid var(--border); }
+.pow2-mode button:hover { color: #d9d9dd; }
+.pow2-mode button[aria-pressed="true"] { background: #0f1a33; color: var(--blue); }
+
+.pow2-range { color: #8b8b92; font-size: 0.9rem; }
+
+.pow2-max {
+  margin-left: 6px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+  padding: 2px 6px;
+}
+
+.pow2-prompt {
+  margin-top: 8px;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: #f2f2f5;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.pow2-prompt sup { font-size: 0.55em; color: var(--blue); }
+
+.pow2-hint { color: #8b8b92; font-size: 0.9rem; }
+
+.pow2-form { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.pow2-input {
+  width: 14rem;
+  max-width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 1.1rem;
+  padding: 6px 12px;
+  outline: none;
+}
+
+.pow2-input:focus { border-color: var(--blue); }
+
+.pow2-submit {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  font: inherit;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.pow2-submit:hover { background: #0f1a33; }
+
+.pow2-feedback { min-height: 1.45em; font-variant-numeric: tabular-nums; }
+.pow2-feedback.ok { color: #5fd38d; }
+.pow2-feedback.bad { color: #ff7a7a; }
+
+.pow2-score { color: #5c5c60; font-size: 0.85rem; }
