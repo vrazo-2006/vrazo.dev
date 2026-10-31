@@ -101,12 +101,7 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-.page > .links {
-  margin-top: 4em;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1.2ch;
-}
+.contact .sep { color: #4a4b50; margin: 0 0.4ch; }
 
 /* ---- Accordion: thin vertical tabs, one section open at a time ---- */
 .accordion {
