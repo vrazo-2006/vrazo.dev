@@ -16,8 +16,31 @@
         Ann Arbor, MI &middot; +1 (313) 478 1985
       </p>
 
-      <section>
-        <h2>Experience</h2>
+      <div class="accordion" id="resume">
+        <section class="panel">
+          <button class="tab" type="button" aria-expanded="false" aria-controls="panel-skills">
+            <span class="tab-mark" aria-hidden="true">+</span>
+            <span class="tab-label">Skills</span>
+          </button>
+          <div class="panel-body" id="panel-skills">
+            <div class="panel-inner">
+              <div class="panel-content">
+        <p><strong>Programming &amp; Software Development:</strong> C++, Java, Python, Git, GitHub, CI/CD</p>
+        <p><strong>Cloud &amp; DevOps:</strong> AWS (CloudWatch, boto3, Lambda, SQS, CloudFormation, Step Functions, OpenSearch, ElasticSearch, API Gateway, IAM)</p>
+        <p><strong>Engineering Tools:</strong> Siemens NX, LabVIEW, Canalyzer, CAN BUS Analysis</p>
+        <p><strong>OS:</strong> Windows, MacOS, Linux</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="panel open">
+          <button class="tab" type="button" aria-expanded="true" aria-controls="panel-experience">
+            <span class="tab-mark" aria-hidden="true">-</span>
+            <span class="tab-label">Experience</span>
+          </button>
+          <div class="panel-body" id="panel-experience">
+            <div class="panel-inner">
+              <div class="panel-content">
 
         <div class="entry">
           <p class="role"><strong>SDE Intern</strong>, Amazon Web Services &ndash; SSM Datastore Team</p>
@@ -63,24 +86,29 @@
             <li>Used Excel to record and manage location data of 360&deg; cameras positioned around factories, providing my team with a reliable source of necessary data</li>
           </ul>
         </div>
-      </section>
-
-      <section>
-        <h2>Education</h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="panel">
+          <button class="tab" type="button" aria-expanded="false" aria-controls="panel-education">
+            <span class="tab-mark" aria-hidden="true">+</span>
+            <span class="tab-label">Education</span>
+          </button>
+          <div class="panel-body" id="panel-education">
+            <div class="panel-inner">
+              <div class="panel-content">
         <div class="entry">
           <p class="role"><strong>University of Michigan</strong>, Bachelor of Engineering in Computer Engineering</p>
           <p class="meta">Ann Arbor, MI &middot; Expected Graduation: April 2028</p>
           <p>Related coursework: Object Oriented Programming (ENGR151), Discrete Mathematics (EECS203), Introduction to Logic Design (EECS270), Programming and Introductory Data Structures (EECS280)</p>
         </div>
-      </section>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-      <section>
-        <h2>Skills</h2>
-        <p><strong>Programming &amp; Software Development:</strong> C++, Java, Python, Git, GitHub, CI/CD</p>
-        <p><strong>Cloud &amp; DevOps:</strong> AWS (CloudWatch, boto3, Lambda, SQS, CloudFormation, Step Functions, OpenSearch, ElasticSearch, API Gateway, IAM)</p>
-        <p><strong>Engineering Tools:</strong> Siemens NX, LabVIEW, Canalyzer, CAN BUS Analysis</p>
-        <p><strong>OS:</strong> Windows, MacOS, Linux</p>
-      </section>
 
       <nav class="links">
         <a href="https://www.linkedin.com/in/victor-razo-bab2bb2bb/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -88,5 +116,6 @@
         <a href="mailto:vrazo.2006@gmail.com">Email</a>
       </nav>
     </main>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
