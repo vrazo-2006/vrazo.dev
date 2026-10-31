@@ -28,8 +28,10 @@ body {
 .page {
   max-width: 760px;
   padding: 64px 24px 96px;
-  margin-left: max(24px, 7vw);
+  margin: 0 auto;
 }
+
+.name, .lead, .contact { text-align: center; }
 
 .page > * + * { margin-top: 1.4em; }
 
@@ -179,6 +181,7 @@ a:focus-visible {
   .tab {
     width: 100%;
     flex-direction: row;
+    justify-content: center;
     gap: 1.5ch;
     padding: 0.9em 0;
     border-right: 0 !important;
@@ -193,6 +196,6 @@ a:focus-visible {
   .panel.open .panel-body { grid-template-rows: 1fr; }
   .panel-inner { width: auto !important; min-height: 0; overflow: hidden; }
   .panel-content { padding: 0.4em 0 1.6em; }
-  .page { margin: 0; padding: 40px 16px 64px; }
+  .page { padding: 40px 16px 64px; }
   .name { font-size: 1.7rem; }
 }
