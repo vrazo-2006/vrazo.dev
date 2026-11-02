@@ -26,7 +26,7 @@ body {
 }
 
 .page {
-  max-width: 760px;
+  max-width: 1040px;
   padding: 64px 24px 96px;
   margin: 0 auto;
 }
@@ -170,7 +170,7 @@ a:focus-visible {
 
 .panel-inner { width: var(--open-w, 560px); }
 
-.panel-content { padding: 1.4em 0 1.8em 3ch; }
+.panel-content { padding: 1.4em 3ch 1.8em; }
 
 @media (max-width: 600px) {
   body { font-size: 14.5px; }
